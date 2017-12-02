@@ -1,30 +1,23 @@
 var currentIndex = 0;
-var questions;
+var testData;
 
 $(document).ready(function(){
 
-
-    questions = [
-        {
-            "equation" : "5 + 1",
-            "answer" : 6,
-            "userInput" : ""
+    $.ajax({
+        url: '/generate',
+        type: 'GET',
+        success: function(response) {
+            testData = response;
+            $("#equation").text(testData["questions"][currentIndex]["equation"]);
         },
-        {
-            "equation" : "2 + 2",
-            "answer" : 4,
-            "userInput" : ""
-        },
-        {
-            "equation" : "3 - 1",
-            "answer" : 2,
-            "userInput" : ""
+        error: function(error) {
+            console.log(error);
         }
-    ];
+    });
 
-    $("#equation").text(questions[currentIndex]["equation"]);
+
     var done = function() {
-        var dataString = JSON.stringify(questions);
+        var dataString = JSON.stringify(testData);
         $.ajax({
             url: '/score',
             data: dataString,
@@ -40,14 +33,14 @@ $(document).ready(function(){
     }
 
     var submitAnswer = function() {
-        if (currentIndex < questions.length - 1) {
-            questions[currentIndex]["userInput"] = $("#answer").val();
+        if (currentIndex < testData["questions"].length - 1) {
+            testData["questions"][currentIndex]["userInput"] = $("#answer").val();
             $("#answer").val("");
             currentIndex = currentIndex + 1;
-            $("#equation").text(questions[currentIndex]["equation"]);
+            $("#equation").text(testData["questions"][currentIndex]["equation"]);
             $("#answer").focus();
         } else {
-            questions[currentIndex]["userInput"] = $("#answer").val();
+            testData["questions"][currentIndex]["userInput"] = $("#answer").val();
             $("#answer").val("");
             $("#equation").text("done");
             $("#answer").focus();
