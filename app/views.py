@@ -15,7 +15,7 @@ def makeDict():
         operator = operators[random.randrange(0,3)]
         number1 = numbers[random.randrange(0,9)]
         number2 = numbers[random.randrange(0,9)]
-        eq = (str(number1) + operator + str(number2))
+        eq = (str(number1) + " " + operator + " " + str(number2))
         answer = (eval(eq))
         equationList.append(eq)
         correctAnswerList.append(answer)
