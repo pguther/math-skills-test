@@ -24,7 +24,7 @@ $(document).ready(function(){
             type: 'POST',
             contentType : 'application/json',
             success: function(response) {
-                alert(response);
+                $("div.test").html("<span>Your Score: " + response + "</span> <br/><br/><br/><a href=\"/test\">Restart?</a><br/><br/><input type=\"text\" id=\"name\" placeholder=\"Name\"> <button >Submit to Highscore</button>");
             },
             error: function(error) {
                 console.log(error);

@@ -42,6 +42,11 @@ def score():
     return str(request.json)
 
 
+@app.route('/save', methods=['POST'])
+def save():
+    return str(request.json)
+
+
 @app.route('/generate')
 def stuff():
     return jsonify(makeDict())
