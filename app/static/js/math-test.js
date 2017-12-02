@@ -25,7 +25,11 @@ $(document).ready(function(){
     $("#equation").text(questions[currentIndex]["equation"]);
 
     var done = function() {
-        debugger;
+        $.post("/score",
+        questions,
+        function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
     }
 
     var submitAnswer = function() {
@@ -42,9 +46,6 @@ $(document).ready(function(){
             $("#answer").focus();
             done();
         }
-
-
-
     }
 
     $("#next").click(function(){
