@@ -39,9 +39,40 @@ def test():
 
 @app.route('/score', methods=['POST'])
 def score():
-    return str(request.json)
+    correct = 0
+    endTime = time.time()
+    startTime = request.json["startTime"]
+    totalTime = endTime - startTime
+    questions = request.json["questions"]
+    for question in questions:
+        try:
+            userInput = int(question["userInput"])
+		except ValueError:
+			pass
+		else:
+			if question["answer"] == int(question["userInput"]):
+				correct += 1
+
+	return str((correct / totalTime) * 100)
 
 
 @app.route('/generate')
 def stuff():
     return jsonify(makeDict())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
