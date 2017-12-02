@@ -1,6 +1,7 @@
 from app import app
 from flask import render_template
 import random
+import time
 from flask import jsonify
 from flask import request
 
@@ -21,7 +22,8 @@ def makeDict():
         correctAnswerList.append(answer)
     for i in range(len(equationList)):
         json.append({"equation": equationList[i], "answer": correctAnswerList[i], "userInput": None})
-    return json
+    timeAndQuestions = {"startTime": time.time(), "questions": json}
+    return timeAndQuestions
 
 
 @app.route('/')
@@ -37,7 +39,6 @@ def test():
 
 @app.route('/score', methods=['POST'])
 def score():
-    print(request.json)
     return str(request.json)
 
 
