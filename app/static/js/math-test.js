@@ -23,12 +23,19 @@ $(document).ready(function(){
     ];
 
     $("#equation").text(questions[currentIndex]["equation"]);
-
     var done = function() {
-        $.post("/score",
-        questions,
-        function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+        var dataString = JSON.stringify(questions);
+        $.ajax({
+            url: '/score',
+            data: dataString,
+            type: 'POST',
+            contentType : 'application/json',
+            success: function(response) {
+                alert(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
         });
     }
 

@@ -2,6 +2,7 @@ from app import app
 from flask import render_template
 import random
 from flask import jsonify
+from flask import request
 
 
 def makeDict():
@@ -19,7 +20,7 @@ def makeDict():
         equationList.append(eq)
         correctAnswerList.append(answer)
     for i in range(len(equationList)):
-        json.append({"equation": equationList[i], "correct": correctAnswerList[i], "user": None})
+        json.append({"equation": equationList[i], "answer": correctAnswerList[i], "userInput": None})
     return json
 
 
@@ -36,7 +37,8 @@ def test():
 
 @app.route('/score', methods=['POST'])
 def score():
-    return "it works";
+    print(request.json)
+    return str(request.json)
 
 
 @app.route('/generate')
