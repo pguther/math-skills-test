@@ -1,5 +1,10 @@
 
-.test {
+.header {
     text-align: center;
     padding-top: 200px;
+}
+
+.test {
+    text-align: center;
+    padding-top: 50px;
 }
