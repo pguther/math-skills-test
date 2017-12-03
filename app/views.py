@@ -1,4 +1,4 @@
-from app import app
+from app import app, db, models
 from flask import render_template
 import random
 import time
@@ -37,6 +37,13 @@ def test():
     return render_template('test.html')
 
 
+@app.route('/highscore')
+def highscore():
+    scores = models.Score.query.order_by(models.Score.score.desc()).limit(20).all()
+    return render_template('highscore.html',
+                           scores=scores)
+
+
 @app.route('/score', methods=['POST'])
 def score():
     correct = 0
@@ -57,7 +64,10 @@ def score():
 
 @app.route('/save', methods=['POST'])
 def save():
-    return str(request.json)
+    score = models.Score(name=request.json["name"], score=request.json["score"])
+    db.session.add(score)
+    db.session.commit()
+    return ""
 
 
 @app.route('/generate')

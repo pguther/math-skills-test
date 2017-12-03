@@ -1,5 +1,6 @@
 var currentIndex = 0;
 var testData;
+var score;
 
 $(document).ready(function(){
 
@@ -24,7 +25,29 @@ $(document).ready(function(){
             type: 'POST',
             contentType : 'application/json',
             success: function(response) {
-                $("div.test").html("<span>Your Score: " + response + "</span> <br/><br/><br/><a href=\"/test\">Restart?</a><br/><br/><input type=\"text\" id=\"name\" placeholder=\"Name\"> <button >Submit to Highscore</button>");
+                score = response;
+                $("div.test").html("<span>Your Score: " + score + "</span> <br/><br/><br/><a href=\"/test\">Restart?</a><br/><br/><input type=\"text\" id=\"name\" placeholder=\"Name\"> <button id=\"save\">Submit to Highscore</button>");
+
+                $("#save").click(function() {
+
+                    scoreData = JSON.stringify({"name": $("#name").val(), "score": score})
+
+                    $.ajax({
+                        url: '/save',
+                        data: scoreData,
+                        type: 'POST',
+                        contentType : 'application/json',
+                        success: function(response) {
+                            window.location.replace("/highscore");
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+
+                });
+
+
             },
             error: function(error) {
                 console.log(error);

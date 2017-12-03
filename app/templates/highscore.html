@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math Skills Test</title>
+    <link href="/static/css/index.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <h1> Highscores</h1>
+
+    {% for score in scores %}
+        <div><p>{{ loop.index }}. {{ score.name }}: <b>{{ score.score }}</b></p></div>
+    {% endfor %}
+
+    <br/>
+    <br/>
+    <br/>
+    <a href="/">Home</a>
+</div>
+
+</body>
+</html>

@@ -2,13 +2,17 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+app.db
 # C extensions
 *.so
 
 # Distribution / packaging
 .Python
+.idea/
 flask/
+tmp/
+db_repository/
+__pycache__/
 env/
 build/
 develop-eggs/
