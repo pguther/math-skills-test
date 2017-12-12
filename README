@@ -2,9 +2,17 @@ To setup the app:
 
     ./setup.sh
 
+    or
+
+    ./setup_mac.sh
+
 To reset the database:
 
     ./reset_db.sh
+
+    or
+
+    ./reset_db_mac.sh
 
 To start the server
 
