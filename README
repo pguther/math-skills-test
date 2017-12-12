@@ -1,0 +1,15 @@
+To setup the app:
+
+    ./setup.sh
+
+To reset the database:
+
+    ./reset_db.sh
+
+To start the server
+
+    flask/bin/python3 run.py
+
+Website url:
+
+    http://localhost:5000/
