@@ -59,7 +59,7 @@ def score():
         else:
             if question["answer"] == int(question["userInput"]):
                 correct += 1
-    return str((correct / totalTime) * 100)
+    return str(round((correct / totalTime) * 100))
 
 
 @app.route('/save', methods=['POST'])

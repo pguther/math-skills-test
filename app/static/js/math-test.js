@@ -10,6 +10,7 @@ $(document).ready(function(){
         success: function(response) {
             testData = response;
             $("#equation").text(testData["questions"][currentIndex]["equation"]);
+            $("#answer").focus();
         },
         error: function(error) {
             console.log(error);
@@ -26,7 +27,7 @@ $(document).ready(function(){
             contentType : 'application/json',
             success: function(response) {
                 score = response;
-                $("div.test").html("<span>Your Score: " + score + "</span> <br/><br/><br/><a href=\"/test\">Restart?</a><br/><br/><input type=\"text\" id=\"name\" placeholder=\"Name\"> <button id=\"save\">Submit to Highscore</button>");
+                $("div.test").html("<span>Your Score: " + score + "</span> <br/><br/><input maxlength=\"7\" type=\"text\" class=\"nameInput\" id=\"name\" placeholder=\"Name\"> <button class=\"btn\" id=\"save\">Submit to Highscore</button><form action=\"/test\"><input type=\"submit\" class=\"btn\" value=\"Restart\" /></form>");
 
                 $("#save").click(function() {
 

@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Math Skills Test</title>
-    <link href="/static/css/index.css" rel="stylesheet">
+    <link href="/static/css/highscore.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="header">
-    <h1> Highscores</h1>
-
-    {% for score in scores %}
-        <div><p>{{ loop.index }}. {{ score.name }}: <b>{{ score.score }}</b></p></div>
-    {% endfor %}
-
-    <br/>
-    <br/>
-    <br/>
-    <a href="/">Home</a>
+    <a href="/"><h1>Math Skills Test</h1></a>
 </div>
+
+<div class="subHeader">
+    <h2>Highscores</h2>
+</div>
+
+<div class="highscore">
+    {% for score in scores %}
+
+        <div class="section group">
+            <div class="col span_1_of_3">
+                {{ loop.index }}.
+            </div>
+            <div class="col span_1_of_3">
+                {{ score.name }}
+            </div>
+            <div class="col span_1_of_3">
+                {{ score.score }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
 
 </body>
 </html>

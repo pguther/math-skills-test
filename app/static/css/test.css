@@ -1,10 +1,56 @@
 
+input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #00487C;
+    font-family: Arial;
+    color: #00487C;
+    font-size: 60px;
+    width: 200px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #027BCE;
+}
+
 .header {
     text-align: center;
-    padding-top: 200px;
+    padding-top: 50px;
+    font-family: Arial;
+    color: #00487C;
+    font-size: 50px;
 }
 
 .test {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 100px;
+    font-family: Arial;
+    color: #00487C;
+    font-size: 60px;
+}
+
+.btn {
+    background: #4BB3FD;
+    border-radius: 5px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
 }
