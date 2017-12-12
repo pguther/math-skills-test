@@ -64,7 +64,7 @@ def score():
 
 @app.route('/save', methods=['POST'])
 def save():
-    score = models.Score(name=request.json["name"], score=request.json["score"])
+    score = models.Score(name=request.json["name"], score=int(request.json["score"]))
     db.session.add(score)
     db.session.commit()
     return ""
